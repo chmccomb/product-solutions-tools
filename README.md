@@ -1,1 +1,25 @@
-IyBwcm9kdWN0LXNvbHV0aW9ucy10b29scwoKQSBzaGFyZWQgbGlicmFyeSBvZiBDbGF1ZGUgQ29kZSBza2lsbHMgYW5kIE1DUCB0b29scyBmb3IgdGhlIExlYWQgQmFuayBwcm9kdWN0IHNvbHV0aW9ucyB0ZWFtLgoKIyMgV2hhdCdzIGluIGhlcmU/Cgp8IERpcmVjdG9yeSB8IFB1cnBvc2UgfAp8LS0tfC0tLXwKfCBbYHNraWxscy9gXSguL3NraWxscy8pIHwgQ2xhdWRlIENvZGUgc2xhc2ggY29tbWFuZCBza2lsbHMgKGAubWRgIHByb21wdCBmaWxlcykgfAp8IFtgbWNwLXNlcnZlcnMvYF0oLi9tY3Atc2VydmVycy8pIHwgQ3VzdG9tIE1DUCBzZXJ2ZXIgaW1wbGVtZW50YXRpb25zIHwKfCBbYGRvY3MvYF0oLi9kb2NzLykgfCBBdXRob3JpbmcgZ3VpZGVzIGFuZCBjb252ZW50aW9ucyB8CgojIyBRdWljayBzdGFydAoKIyMjIEluc3RhbGxpbmcgYSBza2lsbApTZWUgW2Bza2lsbHMvUkVBRE1FLm1kYF0oLi9za2lsbHMvUkVBRE1FLm1kKS4KCiMjIyBVc2luZyBhbiBNQ1Agc2VydmVyClNlZSBbYG1jcC1zZXJ2ZXJzL1JFQURNRS5tZGBdKC4vbWNwLXNlcnZlcnMvUkVBRE1FLm1kKS4KCiMjIENvbnRyaWJ1dGluZwoKMS4gQ29weSB0aGUgcmVsZXZhbnQgdGVtcGxhdGUgKGBza2lsbHMvX3RlbXBsYXRlLm1kYCBvciBgbWNwLXNlcnZlcnMvX3RlbXBsYXRlL2ApCjIuIEZvbGxvdyB0aGUgYXV0aG9yaW5nIGd1aWRlIGluIGBkb2NzL2AKMy4gT3BlbiBhIFBSIHdpdGggYSBzaG9ydCBkZXNjcmlwdGlvbiBvZiB3aGF0IHRoZSBza2lsbC90b29sIGRvZXMK
+# product-solutions-tools
+
+A shared library of Claude Code skills and MCP tools for the Lead Bank product solutions team.
+
+## What's in here?
+
+| Directory | Purpose |
+|---|---|
+| [`skills/`](./skills/) | Claude Code slash command skills (`.md` prompt files) |
+| [`mcp-servers/`](./mcp-servers/) | Custom MCP server implementations |
+| [`docs/`](./docs/) | Authoring guides and conventions |
+
+## Quick start
+
+### Installing a skill
+See [`skills/README.md`](./skills/README.md).
+
+### Using an MCP server
+See [`mcp-servers/README.md`](./mcp-servers/README.md).
+
+## Contributing
+
+1. Copy the relevant template (`skills/_template.md` or `mcp-servers/_template/`)
+2. Follow the authoring guide in `docs/`
+3. Open a PR with a short description of what the skill/tool does
