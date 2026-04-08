@@ -18,7 +18,9 @@ Follow these steps:
 
 2. **Find the account** — Call `list_accounts_by_program` with the program ID. Look for the account matching the requested name (e.g. "Operating DDA"). Note the account's `id`, `bankAccountId` (last 4 digits), and existing `controls.wire.limits`.
 
-3. **Stage the request** — Present a confirmation table to the user showing:
+3. **Ask for operator details** — Before staging, ask the user for their full name and Lead Bank email address (e.g. `name@lead.bank`). These will be used as the `actor` in the API request for attribution purposes.
+
+4. **Stage the request** — Present a confirmation table to the user showing:
    - Account name and last 4 digits of bank account number
    - Program name
    - Current limits vs. requested limits (convert dollar amounts to cents)
@@ -31,18 +33,18 @@ Follow these steps:
 
    Also show the exact API call that will be made. Do NOT proceed until the user explicitly approves.
 
-4. **Execute on approval** — POST to the control-policy endpoint:
+5. **Execute on approval** — POST to the control-policy endpoint (see `config.md` for the URL):
 
 ```bash
-curl -X POST "https://mx3r18ur6c-vpce-0b695dae7de2259b6.execute-api.us-east-1.amazonaws.com/prod/actions/v1/control-policy" \
+curl -X POST "$CONTROL_POLICY_URL" \
   --header 'Content-Type: application/json' \
   --data '{
     "action_context": {
       "entity_type": "program",
       "entity_id": "<program_id>",
       "actor": {
-        "email": "cmccombs@lead.bank",
-        "name": "Charles McCombs"
+        "email": "<operator_email>",
+        "name": "<operator_name>"
       }
     },
     "action_data": {
@@ -80,6 +82,5 @@ curl -X POST "https://mx3r18ur6c-vpce-0b695dae7de2259b6.execute-api.us-east-1.am
 **Important notes:**
 - All limit amounts must be in **cents** (e.g. $200,000 = `20000000`)
 - Always carry over the existing ACH limits and allowed_sec_codes — do not zero them out
-- The `actor` email/name should reflect the person making the change
-- This endpoint is on the internal VPC — it will only work from within the Lead Bank network
-- Audit trail: this action is attributed to the lead-mcp service account, not your personal credentials. Make the change in the dashboard at https://internal.prod.leadbank.cloud/payment-tools/production/programs/{program_id}/accounts/{account_id} if personal attribution is required.
+- The endpoint is on the internal VPC — it will only work from within the Lead Bank network
+- Audit trail: this action is attributed to the lead-mcp service account, not your personal credentials. Make the change in the dashboard if personal attribution is required.
